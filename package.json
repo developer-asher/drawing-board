@@ -1,0 +1,20 @@
+{
+  "name": "drawing-board",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:sass": "sass --watch src/sass:dist/css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/developer-asher/drawing-board.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/developer-asher/drawing-board/issues"
+  },
+  "homepage": "https://github.com/developer-asher/drawing-board#readme"
+}

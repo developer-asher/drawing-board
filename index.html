@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>웹 그림판</title>
+    <link rel="stylesheet" href="dist/css/style.css" />
+    <script src="dist/js/common.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <canvas class="draw_wrap">
+        <p>Error</p>
+      </canvas>
+      <section class="setting">
+        <label for="thickness" class="blind">pen thickness</label>
+        <input type="range" id="thickness" />
+        <ul class="list_types">
+          <li><button>Fill</button></li>
+          <li><button>Paint</button></li>
+          <li><button>Save</button></li>
+        </ul>
+        <ul class="list_colors">
+          <li class="color black"><button></button></li>
+          <li class="color white"><button></button></li>
+          <li class="color red"><button></button></li>
+          <li class="color orange"><button></button></li>
+          <li class="color yellow"><button></button></li>
+          <li class="color green"><button></button></li>
+          <li class="color light-blue"><button></button></li>
+          <li class="color dark-blue"><button></button></li>
+          <li class="color purple"><button></button></li>
+        </ul>
+      </section>
+    </div>
+  </body>
+</html>
