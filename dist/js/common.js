@@ -1,5 +1,4 @@
 const canvas = document.querySelector('.draw_wrap');
-
 // # 1
 // canvas의 css 너비, 높이와 연동.
 const canvasWidth = window.getComputedStyle(canvas, null).width.split('px');
@@ -46,11 +45,31 @@ function downMouse(event) {
   painting = true;
 }
 
-function init() {
+function mouseEvnetListener() {
   canvas.addEventListener('mousemove', moveMouse);
   canvas.addEventListener('mousedown', startPainting);
   canvas.addEventListener('mouseup', stopPainting);
   canvas.addEventListener('mouseleave', stopPainting);
+}
+
+function selectColor(event) {
+  let colors = event.target.innerText;
+
+  if (colors === 'light-blue') {
+    colors = '#0099ff';
+  }
+  ctx.strokeStyle = colors;
+}
+
+function btnColorEventListener() {
+  const colorLists = document.querySelector('.list_colors');
+
+  colorLists.addEventListener('click', (event) => selectColor(event));
+}
+
+function init() {
+  mouseEvnetListener();
+  btnColorEventListener();
 }
 
 init();
