@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>웹 그림판</title>
     <link rel="stylesheet" href="dist/css/style.css" />
-    <script src="dist/js/common.js"></script>
+    <script src="dist/js/common.js" defer></script>
   </head>
   <body>
     <div class="container">
@@ -15,22 +15,35 @@
       </canvas>
       <section class="setting">
         <label for="thickness" class="blind">pen thickness</label>
-        <input type="range" id="thickness" />
+        <input
+          type="range"
+          min="0"
+          max="10"
+          value="2"
+          step="2"
+          id="thickness"
+        />
         <ul class="list_types">
           <li><button>Fill</button></li>
           <li><button>Paint</button></li>
-          <li><button>Save</button></li>
+          <li>
+            <a href="#" download=""><button>Save</button></a>
+          </li>
         </ul>
         <ul class="list_colors">
-          <li class="color black"><button></button></li>
-          <li class="color white"><button></button></li>
-          <li class="color red"><button></button></li>
-          <li class="color orange"><button></button></li>
-          <li class="color yellow"><button></button></li>
-          <li class="color green"><button></button></li>
-          <li class="color light-blue"><button></button></li>
-          <li class="color dark-blue"><button></button></li>
-          <li class="color purple"><button></button></li>
+          <li class="color black"><button class="txt_hide">black</button></li>
+          <li class="color white"><button class="txt_hide">white</button></li>
+          <li class="color red"><button class="txt_hide">red</button></li>
+          <li class="color orange"><button class="txt_hide">orange</button></li>
+          <li class="color yellow"><button class="txt_hide">yellow</button></li>
+          <li class="color green"><button class="txt_hide">green</button></li>
+          <li class="color light-blue">
+            <button class="txt_hide">light-blue</button>
+          </li>
+          <li class="color blue">
+            <button class="txt_hide">blue</button>
+          </li>
+          <li class="color purple"><button class="txt_hide">purple</button></li>
         </ul>
       </section>
     </div>

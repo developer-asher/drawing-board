@@ -3,6 +3,10 @@
   left: -9999em;
 }
 
+.txt_hide {
+  text-indent: -9999em;
+}
+
 body {
   margin: 0;
   font-size: 14px;
@@ -103,7 +107,7 @@ body {
   box-shadow: 1px 1px 5px 1px #e1e1e1, -1px -1px 5px 1px #e1e1e1;
 }
 
-.dark-blue > button {
+.blue > button {
   background-color: blue;
   box-shadow: 1px 1px 5px 1px #e1e1e1, -1px -1px 5px 1px #e1e1e1;
 }

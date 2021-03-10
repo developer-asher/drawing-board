@@ -16,7 +16,7 @@ $btn-colors: (
   yellow: yellow,
   green: green,
   light-blue: #0099ff,
-  dark-blue: blue,
+  blue: blue,
   purple: purple,
 );
 $grey: (
@@ -32,6 +32,9 @@ $box-shadow: 1px 1px 5px 1px #e1e1e1, -1px -1px 5px 1px #e1e1e1;
 .blind {
   position: absolute;
   left: -9999em;
+}
+.txt_hide {
+  text-indent: -9999em;
 }
 
 body {
