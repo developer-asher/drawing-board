@@ -67,9 +67,22 @@ function btnColorEventListener() {
   colorLists.addEventListener('click', (event) => selectColor(event));
 }
 
+function changeBrushThickness(event) {
+  const step = event.target.value;
+
+  ctx.lineWidth = step;
+}
+
+function inputEventListener() {
+  const range = document.querySelector('#thickness');
+
+  range.addEventListener('change', (event) => changeBrushThickness(event));
+}
+
 function init() {
   mouseEvnetListener();
   btnColorEventListener();
+  inputEventListener();
 }
 
 init();
