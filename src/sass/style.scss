@@ -63,7 +63,7 @@ body {
 .setting {
   text-align: center;
 }
-.list_types,
+.list_mode,
 .list_colors {
   display: flex;
   padding-left: 0;
@@ -79,7 +79,7 @@ body {
   }
 }
 
-.list_types {
+.list_mode {
   margin: $base-margin * 2 0;
 
   button {

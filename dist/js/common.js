@@ -1,4 +1,6 @@
 const canvas = document.querySelector('.draw_wrap');
+const ctx = canvas.getContext('2d');
+
 // # 1
 // canvas의 css 너비, 높이와 연동.
 const canvasWidth = window.getComputedStyle(canvas, null).width.split('px');
@@ -13,11 +15,20 @@ canvas.height = canvasHeight[0];
 //   window.innerWidth < 1024 ? window.innerWidth / 1.5 : view.innerWidth / 2;
 // canvas.height = window.innerHeight / 1.5;
 
-const ctx = canvas.getContext('2d');
-ctx.strokeStyle = '#000';
+const defaultColor = '#000';
+
+ctx.strokeStyle = defaultColor;
+ctx.fillStyle = defaultColor;
 ctx.lineWidth = 2;
 
 let painting = false;
+let filling = false;
+
+function handleCanvasClick() {
+  if (filling) {
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+  }
+}
 
 function stopPainting() {
   painting = false;
@@ -41,15 +52,12 @@ function moveMouse(event) {
   }
 }
 
-function downMouse(event) {
-  painting = true;
-}
-
 function mouseEvnetListener() {
   canvas.addEventListener('mousemove', moveMouse);
   canvas.addEventListener('mousedown', startPainting);
   canvas.addEventListener('mouseup', stopPainting);
   canvas.addEventListener('mouseleave', stopPainting);
+  canvas.addEventListener('click', handleCanvasClick);
 }
 
 function selectColor(event) {
@@ -59,6 +67,7 @@ function selectColor(event) {
     colors = '#0099ff';
   }
   ctx.strokeStyle = colors;
+  ctx.fillStyle = colors;
 }
 
 function btnColorEventListener() {
@@ -79,10 +88,27 @@ function inputEventListener() {
   range.addEventListener('change', (event) => changeBrushThickness(event));
 }
 
+function selectMode(mode) {
+  if (filling === true) {
+    filling = false;
+    mode.innerHTML = '<button>Fill</button>';
+  } else {
+    filling = true;
+    mode.innerHTML = '<button>Paint</button>';
+  }
+}
+
+function modeEventListener() {
+  const btnMode = document.querySelector('.btn_mode');
+
+  btnMode.addEventListener('click', () => selectMode(btnMode));
+}
+
 function init() {
   mouseEvnetListener();
   btnColorEventListener();
   inputEventListener();
+  modeEventListener();
 }
 
 init();

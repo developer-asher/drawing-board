@@ -33,26 +33,26 @@ body {
   text-align: center;
 }
 
-.list_types,
+.list_mode,
 .list_colors {
   display: flex;
   padding-left: 0;
   justify-content: center;
   list-style: none;
 }
-.list_types li,
+.list_mode li,
 .list_colors li {
   margin-left: 15px;
 }
-.list_types li:first-child,
+.list_mode li:first-child,
 .list_colors li:first-child {
   margin-left: 0;
 }
 
-.list_types {
+.list_mode {
   margin: 30px 0;
 }
-.list_types button {
+.list_mode button {
   border: 1px solid #8a8a8a;
   border-radius: 5px;
   padding: 7.5px 15px;
