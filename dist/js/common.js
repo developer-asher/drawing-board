@@ -79,6 +79,10 @@ function selectMode(mode) {
   }
 }
 
+function handleContxtMenu(event) {
+  event.preventDefault();
+}
+
 function eventListener() {
   const colorLists = document.querySelector('.list_colors');
   const range = document.querySelector('#thickness');
@@ -88,9 +92,10 @@ function eventListener() {
   canvas.addEventListener('mousedown', () => decidePainting(true));
   canvas.addEventListener('mouseup', () => decidePainting(false));
   canvas.addEventListener('mouseleave', () => decidePainting(false));
+  canvas.addEventListener('contextmenu', handleContxtMenu);
   canvas.addEventListener('click', handleCanvasClick);
-  colorLists.addEventListener('click', (event) => selectColor(event));
-  range.addEventListener('change', (event) => changeBrushThickness(event));
+  colorLists.addEventListener('click', selectColor);
+  range.addEventListener('change', changeBrushThickness);
   btnMode.addEventListener('click', () => selectMode(btnMode));
 }
 
