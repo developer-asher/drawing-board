@@ -104,7 +104,13 @@ function modeEventListener() {
   btnMode.addEventListener('click', () => selectMode(btnMode));
 }
 
+function setInitialCanvasBgColor() {
+  ctx.fillStyle = 'white';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
+
 function init() {
+  setInitialCanvasBgColor();
   mouseEvnetListener();
   btnColorEventListener();
   inputEventListener();
