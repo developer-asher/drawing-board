@@ -83,10 +83,20 @@ function handleContxtMenu(event) {
   event.preventDefault();
 }
 
+function saveImage() {
+  const a = document.createElement('a');
+  const link = canvas.toDataURL();
+
+  a.href = link;
+  a.download = 'PaintJS[_Asher]';
+  a.click();
+}
+
 function eventListener() {
   const colorLists = document.querySelector('.list_colors');
   const range = document.querySelector('#thickness');
   const btnMode = document.querySelector('.btn_mode');
+  const btnSave = document.querySelector('.btn_save');
 
   canvas.addEventListener('mousemove', moveMouse);
   canvas.addEventListener('mousedown', () => decidePainting(true));
@@ -97,6 +107,7 @@ function eventListener() {
   colorLists.addEventListener('click', selectColor);
   range.addEventListener('change', changeBrushThickness);
   btnMode.addEventListener('click', () => selectMode(btnMode));
+  btnSave.addEventListener('click', saveImage);
 }
 
 function init() {
