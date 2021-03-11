@@ -24,18 +24,9 @@ ctx.lineWidth = 2;
 let painting = false;
 let filling = false;
 
-function handleCanvasClick() {
-  if (filling) {
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-  }
-}
-
-function stopPainting() {
-  painting = false;
-}
-
-function startPainting() {
-  painting = true;
+function setInitialCanvasBgColor() {
+  ctx.fillStyle = 'white';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
 function moveMouse(event) {
@@ -52,12 +43,14 @@ function moveMouse(event) {
   }
 }
 
-function mouseEvnetListener() {
-  canvas.addEventListener('mousemove', moveMouse);
-  canvas.addEventListener('mousedown', startPainting);
-  canvas.addEventListener('mouseup', stopPainting);
-  canvas.addEventListener('mouseleave', stopPainting);
-  canvas.addEventListener('click', handleCanvasClick);
+function decidePainting(boolean) {
+  painting = boolean;
+}
+
+function handleCanvasClick() {
+  if (filling) {
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+  }
 }
 
 function selectColor(event) {
@@ -70,22 +63,10 @@ function selectColor(event) {
   ctx.fillStyle = colors;
 }
 
-function btnColorEventListener() {
-  const colorLists = document.querySelector('.list_colors');
-
-  colorLists.addEventListener('click', (event) => selectColor(event));
-}
-
 function changeBrushThickness(event) {
   const step = event.target.value;
 
   ctx.lineWidth = step;
-}
-
-function inputEventListener() {
-  const range = document.querySelector('#thickness');
-
-  range.addEventListener('change', (event) => changeBrushThickness(event));
 }
 
 function selectMode(mode) {
@@ -98,23 +79,24 @@ function selectMode(mode) {
   }
 }
 
-function modeEventListener() {
+function eventListener() {
+  const colorLists = document.querySelector('.list_colors');
+  const range = document.querySelector('#thickness');
   const btnMode = document.querySelector('.btn_mode');
 
+  canvas.addEventListener('mousemove', moveMouse);
+  canvas.addEventListener('mousedown', () => decidePainting(true));
+  canvas.addEventListener('mouseup', () => decidePainting(false));
+  canvas.addEventListener('mouseleave', () => decidePainting(false));
+  canvas.addEventListener('click', handleCanvasClick);
+  colorLists.addEventListener('click', (event) => selectColor(event));
+  range.addEventListener('change', (event) => changeBrushThickness(event));
   btnMode.addEventListener('click', () => selectMode(btnMode));
-}
-
-function setInitialCanvasBgColor() {
-  ctx.fillStyle = 'white';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
 function init() {
   setInitialCanvasBgColor();
-  mouseEvnetListener();
-  btnColorEventListener();
-  inputEventListener();
-  modeEventListener();
+  eventListener();
 }
 
 init();
